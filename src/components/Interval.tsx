@@ -4,27 +4,27 @@ import { MIN_INTERVAL } from '../constants';
 const SECOND = 1000;
 
 interface IProps {
-  interval: number;
-  setInterval: React.Dispatch<React.SetStateAction<number>>;
+  time: number;
+  setTime: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export function Interval({ interval, setInterval }: IProps) {
+export function Interval({ time, setTime }: IProps) {
   const resetInterval = () => {
-    setInterval(MIN_INTERVAL);
+    setTime(MIN_INTERVAL);
   };
 
   const subtractInterval = () => {
-    setInterval((val) => val <= MIN_INTERVAL ? 0 : val - SECOND);
+    setTime((val) => val <= MIN_INTERVAL ? MIN_INTERVAL : val - SECOND);
   };
 
   const addInterval = () => {
-    setInterval((val) => val + SECOND);
+    setTime((val) => val + SECOND);
   };
 
   return (
     <div>
       <h2 className="text-base font-light text-white uppercase">Interval</h2>
-      <p className="text-3xl text-white">{interval / 1000} s</p>
+      <p className="text-3xl text-white">{time / 1000} s</p>
       <div className="my-2 flex items-center gap-x-2">
         <button
           type="button"

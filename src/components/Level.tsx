@@ -12,7 +12,7 @@ export function Level({ level, setLevel }: IProps) {
   };
 
   const subtractLevel = () => {
-    setLevel((val) => val <= MIN_LEVEL ? 1 : val - 1);
+    setLevel((val) => val <= MIN_LEVEL ? MIN_LEVEL : val - 1);
   };
 
   const addLevel = () => {
