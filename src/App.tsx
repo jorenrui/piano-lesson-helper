@@ -46,10 +46,7 @@ function App() {
             <FiExternalLink className="inline h-4 w-4 mr-1" />
             this lesson
           </a>
-          .
-        </p>
-        <p className="mb-2 mr-2 ml-2 mt-1 text-white text-center">
-          Made with love by&nbsp;
+          . Made with love by&nbsp;
           <a
             href={AUTHOR_LINK}
             target="_blank"
@@ -59,7 +56,9 @@ function App() {
             <FiExternalLink className="inline h-4 w-4 mr-1" />
             @jorenrui
           </a>
-          &nbsp;|&nbsp;
+        </p>
+        <p className="mb-2 mr-2 ml-2 mt-1 text-white text-center">
+          Copyright (c) 2021 Joeylene Rivera |&nbsp;
           <a
             href={REPOSITORY_LINK}
             target="_blank"
