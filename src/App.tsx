@@ -3,7 +3,7 @@ import { Interval } from './components/Interval';
 import { Level } from './components/Level';
 import { Note } from './components/Note';
 import { SpeechSwitch } from './components/SpeechSwitch';
-import { LEVEL, MIN_INTERVAL, MIN_LEVEL } from './constants';
+import { AUTHOR_LINK, LEVEL, MIN_INTERVAL, MIN_LEVEL } from './constants';
 
 function App() {
   const [speechEnabled, setSpeechEnabled] = useState(true);
@@ -30,6 +30,20 @@ function App() {
           <Note level={level} time={time} speechEnabled={speechEnabled} />
         </main>
       </div>
+      <footer className="absolute bottom-0">
+        <p className="p-4 text-white text-center">
+          Made with love by&nbsp;
+          <a
+            href={AUTHOR_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-yellow-300 focus:text-yellow-300"
+          >
+            @jorenrui
+          </a>
+          &nbsp;🥴
+        </p>
+      </footer>
     </div>
   )
 }
