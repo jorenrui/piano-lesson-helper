@@ -6,11 +6,14 @@ import { speak } from '../helpers/speak';
 interface IProps {
   level: number;
   setLevel: React.Dispatch<React.SetStateAction<number>>;
+  speechEnabled: boolean;
 }
 
-export function Level({ level, setLevel }: IProps) {
+export function Level({ level, setLevel, speechEnabled }: IProps) {
   useEffect(() => {
-    speak({ text: LEVEL[level - 1] });
+    if (speechEnabled) {
+      speak({ text: LEVEL[level - 1] });
+    }
   }, [level]);
 
   const resetLevel = () => {

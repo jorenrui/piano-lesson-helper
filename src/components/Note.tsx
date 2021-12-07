@@ -19,16 +19,17 @@ let interval: number;
 interface IProps {
   level: number;
   time: number;
+  speechEnabled: boolean;
 }
 
-export function Note({ level, time }: IProps) {
+export function Note({ level, time, speechEnabled }: IProps) {
   const [note, setNote] = useState(getRandomNote());
   const [fingerIndex, setFingerIndex] = useState<keyof typeof NUMBER>(getRandomFingerIndex());
   const [started, setStarted] = useState(false);
   const [intervalCount, setIntervalCount] = useState(0);
 
   useEffect(() => {
-    if (started) {
+    if (started && speechEnabled) {
       speak({ text: level < 3 ? note : `${fingerIndex} ${note}` });
     }
   }, [intervalCount, started]);
