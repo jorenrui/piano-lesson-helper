@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Interval } from './components/Interval';
 import { Level } from './components/Level';
 import { Note } from './components/Note';
-import { MIN_INTERVAL, MIN_LEVEL } from './constants';
+import { LEVEL, MIN_INTERVAL, MIN_LEVEL } from './constants';
 
 function App() {
   const [time, setTime] = useState(MIN_INTERVAL);
@@ -15,15 +15,16 @@ function App() {
   return (
     <div className="min-h-full flex items-center justify-center bg-gray-800">
       <div className="p-2">
-        <header className="my-2 mb-8 text-center">
-          <h1 className="text-3xl font-medium text-white">Piano Helper</h1>
+        <header className="my-2 mb-8 text-center max-w-xl">
+          <h1 className="mt-2 text-3xl font-medium text-white">Piano Helper</h1>
+          <p className="my-1 text-base text-white">{LEVEL[level - 1]}</p>
         </header>
-        <main className="my-2 text-center">
+        <main className="my-2 mx-auto w-max text-center ">
           <div className="my-2 flex justify-between gap-x-8">
             <Interval time={time} setTime={setTime} />
             <Level level={level} setLevel={setLevel} />
           </div>
-          <Note time={time} />
+          <Note level={level} time={time} />
         </main>
       </div>
     </div>

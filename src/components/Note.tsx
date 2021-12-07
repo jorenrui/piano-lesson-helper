@@ -17,10 +17,11 @@ const getRandomFingerIndex = () => FINGER_INDEX[Math.floor(Math.random() * FINGE
 let interval: number;
 
 interface IProps {
+  level: number;
   time: number;
 }
 
-export function Note({ time }: IProps) {
+export function Note({ level, time }: IProps) {
   const [note, setNote] = useState(getRandomNote());
   const [fingerIndex, setFingerIndex] = useState<keyof typeof NUMBER>(getRandomFingerIndex());
   const [started, setStarted] = useState(false);
@@ -28,7 +29,7 @@ export function Note({ time }: IProps) {
 
   useEffect(() => {
     if (started) {
-      speak({ text: `${fingerIndex} ${note}` });
+      speak({ text: level < 3 ? note : `${fingerIndex} ${note}` });
     }
   }, [intervalCount, started]);
 
@@ -50,7 +51,9 @@ export function Note({ time }: IProps) {
   return (
     <div className="mt-5 mb-2">
       <h2 className="text-base font-light text-white uppercase">Note</h2>
-      <p className="text-3xl text-white">{`${NUMBER[fingerIndex]} ${note}`}</p>
+      <p className="text-3xl text-white">
+        {level < 3 ? note : `${NUMBER[fingerIndex]} ${note}`}
+      </p>
       <div className="my-2">
         {!started
           ? (

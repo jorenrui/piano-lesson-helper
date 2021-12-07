@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
-import { MAX_LEVEL, MIN_LEVEL } from '../constants';
+import { LEVEL, MAX_LEVEL, MIN_LEVEL } from '../constants';
+import { speak } from '../helpers/speak';
 
 interface IProps {
   level: number;
@@ -7,6 +9,10 @@ interface IProps {
 }
 
 export function Level({ level, setLevel }: IProps) {
+  useEffect(() => {
+    speak({ text: LEVEL[level - 1] });
+  }, [level]);
+
   const resetLevel = () => {
     setLevel(MIN_LEVEL);
   };
